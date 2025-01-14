@@ -46,6 +46,17 @@ static int	contains_duplicate(t_list *stack, int num)
 	return (0);
 }
 
+static int	is_stack_sorted(t_list *stack)
+{
+	while (stack && stack->next)
+	{
+		if (*(int *)stack->content > *(int *)stack->next->content)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
@@ -59,12 +70,12 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	while (argc > 1)
 	{
-		if (!is_valid_integer(argv[argc - 1], &num)
-			|| contains_duplicate(stack_a, num))
-			exit_with_error(&stack_a, &stack_b);
+		if (!is_valid_integer(argv[argc], &num) || contains_duplicate(stack_a,
+				num))
+			exit_with_error(NULL, NULL);
 		content = (int *)malloc(sizeof(int));
 		if (!content)
-			exit_with_error(&stack_a, &stack_b);
+			exit_with_error(NULL, NULL);
 		*content = num;
 		ft_lstadd_front(&stack_a, ft_lstnew(content));
 		argc--;
