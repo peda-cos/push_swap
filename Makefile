@@ -1,7 +1,7 @@
 NAME = push_swap
 NAME_BONUS = checker
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 SRCS = main.c push_operations.c swap_operations.c rotate_operations.c reverse_rotate_operations.c sorting_algorithms.c sorting_helpers.c sorting_utils.c
