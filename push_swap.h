@@ -6,6 +6,9 @@
 
 void	exit_with_error(t_list **stack_a, t_list **stack_b);
 int		is_valid_integer(const char *str, long long *num);
+void	push_element(t_list **dest_stack, t_list **src_stack);
+void	push_to_a(t_list **stack_a, t_list **stack_b);
+void	push_to_b(t_list **stack_a, t_list **stack_b);
 void	rotate_stack_up(t_list **stack);
 void	rotate_a(t_list **stack_a);
 void	rotate_b(t_list **stack_b);
