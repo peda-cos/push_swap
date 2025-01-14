@@ -35,6 +35,17 @@ int	is_valid_integer(const char *str, long long *num)
 	return (1);
 }
 
+int	contains_duplicate(t_list *stack, int num)
+{
+	while (stack)
+	{
+		if (*(int *)stack->content == num)
+			return (1);
+		stack = stack->next;
+	}
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_list		*stack_a;
@@ -48,13 +59,14 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	while (argc > 1)
 	{
-		if (!is_valid_integer(argv[argc - 1], &num))
+		if (!is_valid_integer(argv[argc - 1], &num)
+			|| contains_duplicate(stack_a, num))
 			exit_with_error(&stack_a, &stack_b);
 		content = (int *)malloc(sizeof(int));
 		if (!content)
 			exit_with_error(&stack_a, &stack_b);
 		*content = num;
-		ft_lstadd_back(&stack_a, ft_lstnew(content));
+		ft_lstadd_front(&stack_a, ft_lstnew(content));
 		argc--;
 	}
 	ft_lstclear(&stack_a, free);
