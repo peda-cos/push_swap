@@ -11,6 +11,7 @@ void	push_to_b(t_list **stack_a, t_list **stack_b);
 void	swap_top_two_elements(t_list **stack);
 void	swap_a(t_list **stack_a);
 void	swap_b(t_list **stack_b);
+void	swap_a_b(t_list **stack_a, t_list **stack_b);
 
 void	rotate_stack_up(t_list **stack);
 void	rotate_a(t_list **stack_a);
