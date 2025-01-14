@@ -36,5 +36,9 @@ void	move_max_to_top(t_list **stack_b, int max_pos);
 void	push_and_rotate(t_list **stack_a, t_list **stack_b);
 int		find_min_position(t_list *stack);
 
+void	sort_three_elements(t_list **stack_a);
+void	sort_five_elements(t_list **stack_a, t_list **stack_b);
+void	sort_small_stack(t_list **stack_a, t_list **stack_b);
+void	sort_stack(t_list **stack_a, t_list **stack_b);
 
 #endif
