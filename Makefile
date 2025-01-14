@@ -4,7 +4,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
-SRCS = main.c rotate_operations.c reverse_rotate_operations.c
+SRCS = main.c stack_operations.c rotate_operations.c reverse_rotate_operations.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
