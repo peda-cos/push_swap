@@ -10,10 +10,10 @@ static void	exit_with_error(t_list **stack_a, t_list **stack_b)
 	exit(1);
 }
 
-static int	is_valid_integer(const char *str, long long *num)
+static int	is_valid_integer(const char *str, long *num)
 {
-	int			i;
-	long long	temp;
+	int		i;
+	long	temp;
 
 	i = 0;
 	if (ft_isspace(str[i]))
@@ -48,10 +48,10 @@ static int	contains_duplicate(t_list *stack, int num)
 
 int	main(int argc, char **argv)
 {
-	t_list		*stack_a;
-	t_list		*stack_b;
-	long long	num;
-	int			*content;
+	t_list	*stack_a;
+	t_list	*stack_b;
+	long	num;
+	int		*content;
 
 	if (argc < 2)
 		return (0);
