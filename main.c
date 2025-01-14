@@ -16,7 +16,7 @@ int	is_valid_integer(const char *str, long long *num)
 	long long	temp;
 
 	i = 0;
-	if (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
+	if (ft_isspace(str[i]))
 		return (0);
 	if (str[i] == '-' || str[i] == '+')
 		i++;
@@ -24,7 +24,7 @@ int	is_valid_integer(const char *str, long long *num)
 		return (0);
 	while (str[i])
 	{
-		if (str[i] < '0' || str[i] > '9')
+		if (!ft_isdigit(str[i]))
 			return (0);
 		i++;
 	}
