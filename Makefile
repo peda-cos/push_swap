@@ -16,7 +16,7 @@ $(LIBFT):
 	@make -C $(LIBFT_DIR) all
 	@echo "Libft build complete."
 
-%.o: %.c libft/libft.h
+%.o: %.c push_swap.h libft/libft.h
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 	@echo "Compiling: $<"
 
