@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	exit_with_error(t_list **stack_a, t_list **stack_b)
+static void	exit_with_error(t_list **stack_a, t_list **stack_b)
 {
 	if (stack_a)
 		ft_lstclear(stack_a, free);
@@ -10,7 +10,7 @@ void	exit_with_error(t_list **stack_a, t_list **stack_b)
 	exit(1);
 }
 
-int	is_valid_integer(const char *str, long long *num)
+static int	is_valid_integer(const char *str, long long *num)
 {
 	int			i;
 	long long	temp;
@@ -35,7 +35,7 @@ int	is_valid_integer(const char *str, long long *num)
 	return (1);
 }
 
-int	contains_duplicate(t_list *stack, int num)
+static int	contains_duplicate(t_list *stack, int num)
 {
 	while (stack)
 	{
