@@ -1,4 +1,4 @@
-#include "push_swap.h"
+"#include "push_swap.h"
 
 int	*create_index_array(t_list *stack, int size)
 {
@@ -94,3 +94,4 @@ int	get_stack_median(t_list *stack)
 	free(array);
 	return (median);
 }
+"
