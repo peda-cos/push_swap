@@ -34,9 +34,28 @@ int	is_valid_integer(const char *str, long long *num)
 	*num = temp;
 	return (1);
 }
+
 int	main(int argc, char **argv)
 {
-	(void)argc;
-	(void)argv;
+	t_list		*stack_a;
+	t_list		*stack_b;
+	long long	num;
+	int			*content;
+
+	if (argc < 2)
+		return (0);
+	stack_a = NULL;
+	stack_b = NULL;
+	while (argc > 1)
+	{
+		if (!is_valid_integer(argv[argc - 1], &num))
+			exit_with_error(&stack_a, &stack_b);
+		content = (int *)malloc(sizeof(int));
+		if (!content)
+			exit_with_error(&stack_a, &stack_b);
+		*content = num;
+		ft_lstadd_back(&stack_a, ft_lstnew(content));
+		argc--;
+	}
 	return (0);
 }
