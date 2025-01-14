@@ -70,6 +70,7 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	while (argc > 1)
 	{
+		argc--;
 		if (!is_valid_integer(argv[argc], &num) || contains_duplicate(stack_a,
 				num))
 			exit_with_error(NULL, NULL);
@@ -78,8 +79,10 @@ int	main(int argc, char **argv)
 			exit_with_error(NULL, NULL);
 		*content = num;
 		ft_lstadd_front(&stack_a, ft_lstnew(content));
-		argc--;
 	}
+	get_sort_index(stack_a);
+	if (!is_stack_sorted(stack_a))
+		sort_stack(&stack_a, &stack_b);
 	ft_lstclear(&stack_a, free);
 	ft_lstclear(&stack_b, free);
 	return (0);

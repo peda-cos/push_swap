@@ -23,4 +23,10 @@ void	reverse_rotate_a(t_list **stack_a);
 void	reverse_rotate_b(t_list **stack_b);
 void	reverse_rotate_a_b(t_list **stack_a, t_list **stack_b);
 
+int		*create_index_array(t_list *stack, int size);
+void	sort_index_array(int *array, int size);
+void	assign_sorted_index(int *sorted_array, t_list *stack, int size);
+void	get_sort_index(t_list *stack);
+int		get_stack_median(t_list *stack);
+
 #endif
