@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static void	exit_with_error(t_list **stack_a, t_list **stack_b)
+void	exit_with_error(t_list **stack_a, t_list **stack_b)
 {
 	if (stack_a)
 		ft_lstclear(stack_a, free);
@@ -46,7 +46,7 @@ static int	contains_duplicate(t_list *stack, int num)
 	return (0);
 }
 
-static int	is_stack_sorted(t_list *stack)
+int	is_stack_sorted(t_list *stack)
 {
 	while (stack && stack->next)
 	{

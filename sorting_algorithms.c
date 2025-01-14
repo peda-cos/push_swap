@@ -60,6 +60,34 @@ void	sort_small_stack(t_list **stack_a, t_list **stack_b)
 		push_to_a(stack_a, stack_b);
 }
 
+void	quick_sort_stack(t_list **stack_a, t_list **stack_b)
+{
+	int	size;
+	int	median;
+	int	pushed;
+
+	median = get_stack_median(*stack_a);
+	pushed = 0;
+	size = ft_lstsize(*stack_a);
+	while (size > 0)
+	{
+		if (*(*stack_a)->index < median)
+		{
+			if (*(*stack_a)->index < median / 2)
+				push_and_rotate(stack_a, stack_b);
+			else
+				push_to_b(stack_a, stack_b);
+			pushed++;
+		}
+		else
+			rotate_a(stack_a);
+		size--;
+	}
+	if (!is_stack_sorted(*stack_a))
+		quick_sort_stack(stack_a, stack_b);
+	push_back_to_a(stack_a, stack_b, pushed);
+}
+
 void	sort_stack(t_list **stack_a, t_list **stack_b)
 {
 	int	size;

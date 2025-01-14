@@ -4,6 +4,9 @@
 # include "libft/libft.h"
 # include <limits.h>
 
+void	exit_with_error(t_list **stack_a, t_list **stack_b);
+int	is_stack_sorted(t_list *stack);
+
 void	push_element(t_list **dest_stack, t_list **src_stack);
 void	push_to_a(t_list **stack_a, t_list **stack_b);
 void	push_to_b(t_list **stack_a, t_list **stack_b);
@@ -39,6 +42,7 @@ int		find_min_position(t_list *stack);
 void	sort_three_elements(t_list **stack_a);
 void	sort_five_elements(t_list **stack_a, t_list **stack_b);
 void	sort_small_stack(t_list **stack_a, t_list **stack_b);
+void	quick_sort_stack(t_list **stack_a, t_list **stack_b);
 void	sort_stack(t_list **stack_a, t_list **stack_b);
 
 #endif
