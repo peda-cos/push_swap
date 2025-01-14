@@ -25,3 +25,10 @@ void	swap_b(t_list **stack_b)
 	swap_top_two_elements(stack_b);
 	ft_printf("sb\n");
 }
+
+void	swap_a_b(t_list **stack_a, t_list **stack_b)
+{
+	swap_top_two_elements(stack_a);
+	swap_top_two_elements(stack_b);
+	ft_printf("ss\n");
+}
