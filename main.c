@@ -6,7 +6,7 @@ void	exit_with_error(t_list **stack_a, t_list **stack_b)
 		ft_lstclear(stack_a, free);
 	if (stack_b)
 		ft_lstclear(stack_b, free);
-	ft_putchar_fd('Error\n', 2);
+	ft_putstr_fd("Error\n", 2);
 	exit(1);
 }
 
