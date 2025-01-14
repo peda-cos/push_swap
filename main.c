@@ -57,5 +57,7 @@ int	main(int argc, char **argv)
 		ft_lstadd_back(&stack_a, ft_lstnew(content));
 		argc--;
 	}
+	ft_lstclear(&stack_a, free);
+	ft_lstclear(&stack_b, free);
 	return (0);
 }
