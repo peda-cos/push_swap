@@ -29,14 +29,17 @@ all: $(NAME)
 $(NAME): $(OBJS)
 
 %.o: %.c libft.h
-	$(CC) $(CFLAGS) -c $< -o $@
-	ar rcs $(NAME) $@
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@ar rcs $(NAME) $@
+	@echo "Compiling: $<"
 
 clean:
-	rm -f $(OBJS)
+	@rm -f $(OBJS)
+	@echo "Clean complete."
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "Fclean complete."
 
 re: fclean all
 
