@@ -6,7 +6,7 @@
 #    By: peda-cos <peda-cos@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/14 19:52:23 by peda-cos          #+#    #+#              #
-#    Updated: 2025/01/14 22:38:27 by peda-cos         ###   ########.fr        #
+#    Updated: 2025/01/14 22:40:12 by peda-cos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ $(LIBFT):
 	@echo "Libft build complete."
 
 %.o: %.c push_swap.h libft/libft.h
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "Compiling: $<"
 
 clean:
