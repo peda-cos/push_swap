@@ -6,7 +6,7 @@
 /*   By: peda-cos <peda-cos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 19:51:44 by peda-cos          #+#    #+#             */
-/*   Updated: 2025/01/15 16:40:00 by peda-cos         ###   ########.fr       */
+/*   Updated: 2025/01/15 16:55:01 by peda-cos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,35 +73,6 @@ void	sort_small_stack(t_list **stack_a, t_list **stack_b)
 		push_to_a(stack_a, stack_b);
 }
 
-void	radix_sort(t_list **stack_a, t_list **stack_b)
-{
-	int	i;
-	int	j;
-	int	size;
-	int	max_bits;
-
-	size = ft_lstsize(*stack_a);
-	max_bits = 0;
-	while (((size - 1) >> max_bits) != 0)
-		max_bits++;
-	i = 0;
-	while (i < max_bits)
-	{
-		j = 0;
-		while (j < size)
-		{
-			if (((*(int *)(*stack_a)->index >> i) & 1) == 0)
-				push_to_b(stack_a, stack_b);
-			else
-				rotate_a(stack_a);
-			j++;
-		}
-		while (ft_lstsize(*stack_b) > 0)
-			push_to_a(stack_a, stack_b);
-		i++;
-	}
-}
-
 void	sort_stack(t_list **stack_a, t_list **stack_b)
 {
 	int	size;
@@ -116,5 +87,5 @@ void	sort_stack(t_list **stack_a, t_list **stack_b)
 	else if (size <= 10)
 		sort_small_stack(stack_a, stack_b);
 	else
-		radix_sort(stack_a, stack_b);
+		chunk_sort(stack_a, stack_b);
 }

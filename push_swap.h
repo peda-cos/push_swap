@@ -6,7 +6,7 @@
 /*   By: peda-cos <peda-cos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 19:49:05 by peda-cos          #+#    #+#             */
-/*   Updated: 2025/01/15 16:40:15 by peda-cos         ###   ########.fr       */
+/*   Updated: 2025/01/15 16:48:00 by peda-cos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		find_min_position(t_list *stack);
 void	sort_three_elements(t_list **stack_a);
 void	sort_five_elements(t_list **stack_a, t_list **stack_b);
 void	sort_small_stack(t_list **stack_a, t_list **stack_b);
-void	radix_sort(t_list **stack_a, t_list **stack_b);
+void	chunk_sort(t_list **stack_a, t_list **stack_b);
 void	sort_stack(t_list **stack_a, t_list **stack_b);
 
 #endif
