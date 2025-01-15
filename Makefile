@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: peda-cos <peda-cos@student.42.fr>          +#+  +:+       +#+         #
+#    By: peda-cos <peda-cos@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/14 19:52:23 by peda-cos          #+#    #+#              #
-#    Updated: 2025/01/14 22:40:12 by peda-cos         ###   ########.fr        #
+#    Updated: 2025/01/15 15:21:27 by peda-cos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ $(NAME): $(OBJS) $(LIBFT)
 	@echo "Push_swap build complete."
 
 $(LIBFT):
-	@make -C $(LIBFT_DIR) all
+	@make -C $(LIBFT_DIR)
 	@echo "Libft build complete."
 
 %.o: %.c push_swap.h libft/libft.h
