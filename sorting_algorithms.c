@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting_algorithms.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peda-cos <peda-cos@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: peda-cos <peda-cos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 19:51:44 by peda-cos          #+#    #+#             */
-/*   Updated: 2025/01/14 19:55:17 by peda-cos         ###   ########.fr       */
+/*   Updated: 2025/01/14 22:31:09 by peda-cos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,8 @@ void	sort_stack(t_list **stack_a, t_list **stack_b)
 		swap_a(stack_a);
 	else if (size == 3)
 		sort_three_elements(stack_a);
+	else if (size == 5)
+		sort_five_elements(stack_a, stack_b);
 	else if (size <= 10)
 		sort_small_stack(stack_a, stack_b);
 	else
