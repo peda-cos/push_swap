@@ -6,36 +6,11 @@
 /*   By: peda-cos <peda-cos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 19:52:30 by peda-cos          #+#    #+#             */
-/*   Updated: 2025/01/14 21:44:57 by peda-cos         ###   ########.fr       */
+/*   Updated: 2025/01/15 18:45:16 by peda-cos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	is_valid_integer(const char *str, long *num)
-{
-	int		i;
-	long	temp;
-
-	i = 0;
-	if (ft_isspace(str[i]))
-		return (0);
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	if (!str[i])
-		return (0);
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
-		i++;
-	}
-	temp = ft_atoi(str);
-	if (temp > INT_MAX || temp < INT_MIN)
-		return (0);
-	*num = temp;
-	return (1);
-}
 
 static int	contains_duplicate(t_list *stack, int num)
 {
