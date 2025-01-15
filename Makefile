@@ -3,15 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: peda-cos <peda-cos@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: peda-cos <peda-cos@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/14 19:52:23 by peda-cos          #+#    #+#              #
-#    Updated: 2025/01/14 20:05:11 by peda-cos         ###   ########.fr        #
+#    Updated: 2025/01/14 22:38:27 by peda-cos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-NAME_BONUS = checker
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 LIBFT_DIR = ./libft
