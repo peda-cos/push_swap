@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_operations.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peda-cos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: peda-cos <peda-cos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 19:38:30 by peda-cos          #+#    #+#             */
-/*   Updated: 2025/01/14 19:38:30 by peda-cos         ###   ########.fr       */
+/*   Created: 2025/01/14 19:48:49 by peda-cos          #+#    #+#             */
+/*   Updated: 2025/01/14 19:55:23 by peda-cos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,11 @@ void	push_back_to_a(t_list **stack_a, t_list **stack_b, int pushed)
 		pushed--;
 	}
 }
+
 void	push_min_to_b(t_list **stack_a, t_list **stack_b)
 {
-	int min_pos;
-	int size;
+	int	min_pos;
+	int	size;
 
 	size = ft_lstsize(*stack_a);
 	min_pos = find_min_position(*stack_a);

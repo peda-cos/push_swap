@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peda-cos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: peda-cos <peda-cos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 19:38:35 by peda-cos          #+#    #+#             */
-/*   Updated: 2025/01/14 19:38:36 by peda-cos         ###   ########.fr       */
+/*   Created: 2025/01/14 19:49:05 by peda-cos          #+#    #+#             */
+/*   Updated: 2025/01/14 19:55:01 by peda-cos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <limits.h>
 
 void	exit_with_error(t_list **stack_a, t_list **stack_b);
-int	is_stack_sorted(t_list *stack);
+int		is_stack_sorted(t_list *stack);
 
 void	push_element(t_list **dest_stack, t_list **src_stack);
 void	push_to_a(t_list **stack_a, t_list **stack_b);

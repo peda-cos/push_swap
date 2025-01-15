@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: peda-cos <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: peda-cos <peda-cos@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/01/14 19:39:12 by peda-cos          #+#    #+#              #
-#    Updated: 2025/01/14 19:39:13 by peda-cos         ###   ########.fr        #
+#    Created: 2025/01/14 19:52:23 by peda-cos          #+#    #+#              #
+#    Updated: 2025/01/14 20:05:11 by peda-cos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,9 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
-SRCS = main.c push_operations.c swap_operations.c rotate_operations.c reverse_rotate_operations.c sorting_algorithms.c sorting_helpers.c sorting_utils.c
+SRCS = main.c push_operations.c swap_operations.c rotate_operations.c \
+	   reverse_rotate_operations.c sorting_algorithms.c sorting_helpers.c \
+	   sorting_utils.c utils.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

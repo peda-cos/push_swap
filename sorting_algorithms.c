@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting_algorithms.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peda-cos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: peda-cos <peda-cos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 19:38:50 by peda-cos          #+#    #+#             */
-/*   Updated: 2025/01/14 19:38:51 by peda-cos         ###   ########.fr       */
+/*   Created: 2025/01/14 19:51:44 by peda-cos          #+#    #+#             */
+/*   Updated: 2025/01/14 19:55:17 by peda-cos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	sort_three_elements(t_list **stack_a)
 		rotate_a(stack_a);
 	}
 }
+
 void	sort_five_elements(t_list **stack_a, t_list **stack_b)
 {
 	int	size;

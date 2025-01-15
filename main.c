@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peda-cos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: peda-cos <peda-cos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 19:38:23 by peda-cos          #+#    #+#             */
-/*   Updated: 2025/01/14 19:38:25 by peda-cos         ###   ########.fr       */
+/*   Created: 2025/01/14 19:52:30 by peda-cos          #+#    #+#             */
+/*   Updated: 2025/01/14 20:04:57 by peda-cos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	exit_with_error(t_list **stack_a, t_list **stack_b)
-{
-	if (stack_a)
-		ft_lstclear(stack_a, free);
-	if (stack_b)
-		ft_lstclear(stack_b, free);
-	ft_putstr_fd("Error\n", 2);
-	exit(1);
-}
 
 static int	is_valid_integer(const char *str, long *num)
 {
@@ -56,17 +46,6 @@ static int	contains_duplicate(t_list *stack, int num)
 		stack = stack->next;
 	}
 	return (0);
-}
-
-int	is_stack_sorted(t_list *stack)
-{
-	while (stack && stack->next)
-	{
-		if (*(int *)stack->content > *(int *)stack->next->content)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
 }
 
 int	main(int argc, char **argv)
