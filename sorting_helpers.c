@@ -6,7 +6,7 @@
 /*   By: peda-cos <peda-cos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 19:51:53 by peda-cos          #+#    #+#             */
-/*   Updated: 2025/01/14 19:51:54 by peda-cos         ###   ########.fr       */
+/*   Updated: 2025/01/20 08:16:08 by peda-cos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,20 +89,4 @@ void	get_sort_index(t_list *stack)
 	sort_index_array(array, size);
 	assign_sorted_index(array, stack, size);
 	free(array);
-}
-
-int	get_stack_median(t_list *stack)
-{
-	int	*array;
-	int	size;
-	int	median;
-
-	size = ft_lstsize(stack);
-	array = create_index_array(stack, size);
-	if (!array)
-		return (0);
-	sort_index_array(array, size);
-	median = array[size / 2];
-	free(array);
-	return (median);
 }
