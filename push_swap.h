@@ -6,7 +6,7 @@
 /*   By: peda-cos <peda-cos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 19:49:05 by peda-cos          #+#    #+#             */
-/*   Updated: 2025/01/15 18:45:12 by peda-cos         ###   ########.fr       */
+/*   Updated: 2025/01/20 08:20:24 by peda-cos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,9 @@ int		*create_index_array(t_list *stack, int size);
 void	sort_index_array(int *array, int size);
 void	assign_sorted_index(int *sorted_array, t_list *stack, int size);
 void	get_sort_index(t_list *stack);
-int		get_stack_median(t_list *stack);
 
 int		find_max_position(t_list *stack_b);
 void	move_max_to_top(t_list **stack_b, int max_pos);
-void	push_and_rotate(t_list **stack_a, t_list **stack_b);
 int		find_min_position(t_list *stack);
 
 void	sort_three_elements(t_list **stack_a);
