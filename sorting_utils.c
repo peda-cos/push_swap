@@ -6,7 +6,7 @@
 /*   By: peda-cos <peda-cos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 19:52:08 by peda-cos          #+#    #+#             */
-/*   Updated: 2025/01/14 19:52:10 by peda-cos         ###   ########.fr       */
+/*   Updated: 2025/01/20 08:18:21 by peda-cos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,6 @@ void	move_max_to_top(t_list **stack_b, int max_pos)
 			max_pos++;
 		}
 	}
-}
-
-void	push_and_rotate(t_list **stack_a, t_list **stack_b)
-{
-	push_to_b(stack_a, stack_b);
-	rotate_b(stack_b);
 }
 
 int	find_min_position(t_list *stack)
