@@ -6,7 +6,7 @@
 #    By: peda-cos <peda-cos@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/14 19:52:23 by peda-cos          #+#    #+#              #
-#    Updated: 2025/01/20 08:22:35 by peda-cos         ###   ########.fr        #
+#    Updated: 2025/01/20 19:18:30 by peda-cos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,9 +44,6 @@ fclean: clean
 	@make fclean -C $(LIBFT_DIR)
 	@echo "Fclean complete."
 
-format:
-	c_formatter_42 *.c *.h
-
 re: fclean all
 
-.PHONY: all clean fclean re format
+.PHONY: all clean fclean re
