@@ -6,7 +6,7 @@
 /*   By: peda-cos <peda-cos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 19:52:30 by peda-cos          #+#    #+#             */
-/*   Updated: 2025/01/26 20:01:06 by peda-cos         ###   ########.fr       */
+/*   Updated: 2025/01/26 20:13:43 by peda-cos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,12 @@ static void	populate_stack(int argc, char **argv, t_list **stack_a)
 	i = 1;
 	while (i < argc)
 	{
-		if (!is_valid_integer(argv[i], &num))
-			exit_with_error(stack_a, NULL);
+		is_valid_integer(argv[i], &num);
 		content = malloc(sizeof(int));
 		if (!content)
 			exit_with_error(stack_a, NULL);
 		*content = (int)num;
-		ft_lstadd_front(stack_a, ft_lstnew(content));
+		ft_lstadd_back(stack_a, ft_lstnew(content));
 		i++;
 	}
 }
