@@ -6,7 +6,7 @@
 /*   By: peda-cos <peda-cos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 19:52:30 by peda-cos          #+#    #+#             */
-/*   Updated: 2025/01/26 20:13:43 by peda-cos         ###   ########.fr       */
+/*   Updated: 2025/01/26 20:19:36 by peda-cos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	contains_duplicate(long num, int current_index, char **argv)
 	j = 1;
 	while (j < current_index)
 	{
-		if (!is_valid_integer(argv[j], &prev_num))
+		if (!ft_atol(argv[j], &prev_num))
 			return (1);
 		if (num == prev_num)
 			return (1);
@@ -37,7 +37,7 @@ static void	validate_inputs(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		if (!is_valid_integer(argv[i], &num))
+		if (!ft_atol(argv[i], &num))
 			exit_with_error(NULL, NULL);
 		if (contains_duplicate(num, i, argv))
 			exit_with_error(NULL, NULL);
@@ -54,7 +54,7 @@ static void	populate_stack(int argc, char **argv, t_list **stack_a)
 	i = 1;
 	while (i < argc)
 	{
-		is_valid_integer(argv[i], &num);
+		ft_atol(argv[i], &num);
 		content = malloc(sizeof(int));
 		if (!content)
 			exit_with_error(stack_a, NULL);

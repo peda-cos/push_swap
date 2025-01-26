@@ -6,7 +6,7 @@
 /*   By: peda-cos <peda-cos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:04:04 by peda-cos          #+#    #+#             */
-/*   Updated: 2025/01/15 19:28:04 by peda-cos         ###   ########.fr       */
+/*   Updated: 2025/01/26 20:19:30 by peda-cos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ static int	is_overflow(long temp, int digit, int sign)
 {
 	if (sign == 1 && temp > (LONG_MAX - digit) / 10)
 		return (1);
-	if (sign == -1 && - temp < (LONG_MIN + digit) / 10)
+	if (sign == -1 && -temp < (LONG_MIN + digit) / 10)
 		return (1);
 	return (0);
 }
 
-int	is_valid_integer(const char *str, long *num)
+int	ft_atol(const char *str, long *num)
 {
 	int		sign;
 	long	temp;
