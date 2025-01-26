@@ -6,7 +6,7 @@
 /*   By: peda-cos <peda-cos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 19:52:30 by peda-cos          #+#    #+#             */
-/*   Updated: 2025/01/15 18:45:16 by peda-cos         ###   ########.fr       */
+/*   Updated: 2025/01/26 15:40:29 by peda-cos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	populate_stack(int argc, char **argv, t_list **stack_a)
 		argc--;
 		if (!is_valid_integer(argv[argc], &num) || contains_duplicate(*stack_a,
 				num))
-			exit_with_error(NULL, NULL);
+			exit_with_error(NULL, NULL); // <- LEAK QUANDO PASSADO 1 2 a 3 E QUANDO PASSA 1 2 2, OU SEJA, QUANDO PASSA LETRA NO MEIO OU QUANDO PASSA NÚMERO REPETIDO
 		content = (int *)malloc(sizeof(int));
 		if (!content)
 			exit_with_error(NULL, NULL);
