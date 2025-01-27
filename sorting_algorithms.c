@@ -39,23 +39,6 @@ void	sort_three_elements(t_list **stack_a)
 	}
 }
 
-void	sort_five_elements(t_list **stack_a, t_list **stack_b)
-{
-	int	size;
-	int	i;
-
-	size = ft_lstsize(*stack_a);
-	i = 0;
-	while (i < size - 3)
-	{
-		push_min_to_b(stack_a, stack_b);
-		i++;
-	}
-	sort_three_elements(stack_a);
-	while (*stack_b)
-		push_to_a(stack_a, stack_b);
-}
-
 void	sort_small_stack(t_list **stack_a, t_list **stack_b)
 {
 	int	size;
@@ -82,8 +65,6 @@ void	sort_stack(t_list **stack_a, t_list **stack_b)
 		swap_a(stack_a);
 	else if (size == 3)
 		sort_three_elements(stack_a);
-	else if (size == 5)
-		sort_five_elements(stack_a, stack_b);
 	else if (size <= 10)
 		sort_small_stack(stack_a, stack_b);
 	else
