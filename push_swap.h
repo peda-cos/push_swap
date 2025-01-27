@@ -6,7 +6,7 @@
 /*   By: peda-cos <peda-cos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 19:49:05 by peda-cos          #+#    #+#             */
-/*   Updated: 2025/01/26 20:19:30 by peda-cos         ###   ########.fr       */
+/*   Updated: 2025/01/26 21:12:21 by peda-cos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 void	exit_with_error(t_list **stack_a, t_list **stack_b);
 int		is_stack_sorted(t_list *stack);
-int		ft_atol(const char *str, long *num);
+int		modified_atol(const char *str, long *num);
 
 void	push_element(t_list **dest_stack, t_list **src_stack);
 void	push_to_a(t_list **stack_a, t_list **stack_b);
