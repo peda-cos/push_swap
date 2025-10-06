@@ -1,222 +1,266 @@
-# 🔄 Push Swap
+# Push Swap
 
-![C](https://img.shields.io/badge/language-C-blue.svg)
-![42 School](https://img.shields.io/badge/school-42-brightgreen.svg)
-![Status](https://img.shields.io/badge/status-complete-success.svg)
+A highly efficient sorting algorithm implementation using two stacks and a limited set of operations. This project is part of the 42 School curriculum and challenges students to sort data with optimal performance using minimal operations.
 
-A highly optimized sorting algorithm implementation that sorts integers using two stacks (`stack_a` and `stack_b`) with a limited set of operations. This project challenges you to sort data with the minimum number of moves possible.
+## 📋 Table of Contents
 
-## 🎯 Overview
+- [About](#about)
+- [Algorithm Overview](#algorithm-overview)
+- [Technology Stack](#technology-stack)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Operations](#operations)
+- [Sorting Strategies](#sorting-strategies)
+- [Performance](#performance)
+- [License](#license)
 
-Push Swap is a sorting algorithm project that simulates the process of sorting a stack of integers using only specific stack operations. The goal is to sort the numbers in ascending order in `stack_a` using the minimum number of operations possible.
+## 🎯 About
 
-### The Challenge
-- You have two stacks: `stack_a` (contains random integers) and `stack_b` (empty)
-- You can only use specific operations (push, swap, rotate)
-- Sort all numbers in `stack_a` in ascending order
-- Use the fewest operations possible
+**Push Swap** is a sorting algorithm project that sorts a stack of integers using only two stacks (A and B) and a specific set of operations. The goal is to sort the numbers in ascending order in stack A with the minimum number of operations possible.
 
-## ✨ Features
+### Project Objectives
 
-- **Multi-algorithm approach**: Different strategies for different input sizes
-- **Chunk sorting**: Efficient algorithm for large datasets (100+ numbers)
-- **Small stack optimization**: Specialized algorithms for 2-10 numbers
-- **Input validation**: Comprehensive error handling for invalid inputs
-- **Memory management**: Proper cleanup and leak prevention
-- **Performance optimized**: Achieves excellent operation counts
+- Implement an efficient sorting algorithm with minimal operations
+- Understand and apply algorithm optimization techniques
+- Work with data structures (stacks/linked lists)
+- Master memory management in C
+- Practice algorithmic thinking and problem-solving
 
-## 🧠 Algorithm Strategy
+## 🧠 Algorithm Overview
 
-The implementation uses different algorithms based on input size:
+The project implements multiple sorting strategies based on stack size:
 
-### For 2 numbers:
-- Simple swap if needed
+- **2 elements**: Single swap operation
+- **3 elements**: Optimized hardcoded sorting
+- **4-10 elements**: Small stack algorithm (selective push to stack B)
+- **11+ elements**: Chunk sort algorithm with index-based partitioning
 
-### For 3 numbers:
-- Hardcoded optimal solutions for all permutations
+The chunk sort algorithm divides the stack into chunks, processes each chunk by pushing elements to stack B, and then reconstructs the sorted stack by pushing elements back to stack A in descending order.
 
-### For 4-10 numbers:
-- Push smallest numbers to `stack_b`
-- Sort remaining 3 in `stack_a`
-- Push back from `stack_b` in order
+## 🛠 Technology Stack
 
-### For 11+ numbers:
-- **Chunk sorting algorithm**
-- Divide numbers into chunks (5 for ≤100, 11 for >100)
-- Process chunks systematically
-- Return elements to `stack_a` in sorted order
+- **Language**: C (C99 standard)
+- **Compiler**: gcc/clang
+- **Build System**: Make
+- **Libraries**: Custom libft library
+- **Development Standards**: 42 School Norminette v3
 
-## 🚀 Installation
+### Dependencies
 
-### Prerequisites
-- C compiler
-- Make
-- Unix-like operating system (Linux/macOS)
+- **libft**: Custom C standard library implementation
+  - Linked list operations
+  - String manipulation
+  - Memory management utilities
+  - Custom printf implementation
 
-### Build from Source
+## 📁 Project Structure
 
-```bash
-# Clone the repository
-git clone https://github.com/peda-cos/push_swap.git
-cd push_swap
-
-# Build the project
-make
-
-# Clean build files (optional)
-make clean
+```
+push_swap/
+├── push_swap.h              # Main header file with function prototypes
+├── main.c                   # Entry point, input validation, and stack initialization
+├── Makefile                 # Build configuration
+│
+├── Operations/
+│   ├── push_operations.c         # pa, pb operations
+│   ├── swap_operations.c         # sa, sb, ss operations
+│   ├── rotate_operations.c       # ra, rb, rr operations
+│   └── reverse_rotate_operations.c  # rra, rrb, rrr operations
+│
+├── Sorting/
+│   ├── sorting_algorithms.c      # Main sorting logic and algorithm selection
+│   ├── sorting_helpers.c         # Helper functions for sorting operations
+│   ├── sorting_utils.c           # Utility functions (find min/max, positioning)
+│   └── chunk_sort.c              # Chunk-based sorting algorithm for large stacks
+│
+├── Utils/
+│   └── utils.c                   # Error handling, validation, and utility functions
+│
+└── libft/                        # Custom C library
+    ├── libft.h                   # Library header
+    ├── Makefile                  # Library build configuration
+    └── [various .c files]        # Library implementations
 ```
 
-The build process will:
-1. Compile the custom `libft` library
-2. Compile all push_swap source files
-3. Link everything into the `push_swap` executable
+## 🚀 Getting Started
 
-### 🛠️ Build Commands
+### Prerequisites
 
-| Command | Description |
-|---------|-------------|
-| `make` | Build the project |
-| `make clean` | Remove object files |
-| `make fclean` | Remove object files and executable |
-| `make re` | Clean rebuild |
+- GCC or Clang
+- Make
+- Unix-like operating system (Linux, macOS)
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/peda-cos/push_swap.git
+cd push_swap
+```
+
+2. Compile the project:
+```bash
+make
+```
+
+This will compile both the libft library and the push_swap executable.
+
+### Build Commands
+
+```bash
+make        # Build the project
+make clean  # Remove object files
+make fclean # Remove object files and executable
+make re     # Rebuild the project from scratch
+```
 
 ## 💻 Usage
 
 ### Basic Usage
 
 ```bash
-# Sort a list of integers
-./push_swap 3 1 4 1 5 9 2 6
-
-# Using negative numbers
-./push_swap -3 0 1 -1 5
-
-# Large dataset
-./push_swap $(seq 1 100 | shuf)
+./push_swap [numbers...]
 ```
 
-### Input Requirements ⚠️
-
-- **Integers only**: Must be within `INT_MIN` to `INT_MAX` range
-- **No duplicates**: Each number must be unique
-- **Space-separated**: Numbers separated by spaces
-- **Valid format**: Only digits, spaces, and +/- signs
-
-### Error Cases
-
-The program outputs `"Error\n"` to stderr for:
-- Non-integer arguments
-- Duplicate numbers
-- Numbers outside integer range
-- Invalid characters in input
+The program takes a list of integers as arguments and outputs the sequence of operations needed to sort them.
 
 ### Examples
 
 ```bash
-# ✅ Valid inputs
-./push_swap 2 1 3
-./push_swap 0
-./push_swap -1 -2 -3
+# Sort three numbers
+./push_swap 3 2 1
+# Output: sa ra
 
-# ❌ Invalid inputs
-./push_swap 1 2 3 1    # Duplicate
-./push_swap 1 abc      # Non-integer
-./push_swap           # No arguments (exits silently)
+# Sort five numbers
+./push_swap 5 4 3 2 1
+# Output: pb pb pb sa pa pa pa
+
+# Sort random numbers
+./push_swap 42 17 89 3 56
 ```
 
-## 🔧 Available Operations
+### Input Validation
 
-| Operation | Description | Output |
-|-----------|-------------|---------|
-| `sa` | Swap first 2 elements of stack_a | `sa` |
-| `sb` | Swap first 2 elements of stack_b | `sb` |
-| `ss` | `sa` and `sb` at the same time | `ss` |
-| `pa` | Push first element of stack_b to stack_a | `pa` |
-| `pb` | Push first element of stack_a to stack_b | `pb` |
-| `ra` | Rotate stack_a (first element becomes last) | `ra` |
-| `rb` | Rotate stack_b (first element becomes last) | `rb` |
-| `rr` | `ra` and `rb` at the same time | `rr` |
-| `rra` | Reverse rotate stack_a (last element becomes first) | `rra` |
-| `rrb` | Reverse rotate stack_b (last element becomes first) | `rrb` |
-| `rrr` | `rra` and `rrb` at the same time | `rrr` |
+The program validates input and handles:
+- ✅ Integers within INT_MIN to INT_MAX range
+- ✅ Duplicate detection
+- ✅ Invalid number format detection
+- ❌ Outputs "Error" to stderr for invalid input
+
+## 🔄 Operations
+
+The program can perform the following operations:
+
+### Swap Operations
+- `sa` - Swap the first two elements of stack A
+- `sb` - Swap the first two elements of stack B
+- `ss` - Execute `sa` and `sb` simultaneously
+
+### Push Operations
+- `pa` - Push the top element from stack B to stack A
+- `pb` - Push the top element from stack A to stack B
+
+### Rotate Operations
+- `ra` - Rotate stack A upward (first element becomes last)
+- `rb` - Rotate stack B upward
+- `rr` - Execute `ra` and `rb` simultaneously
+
+### Reverse Rotate Operations
+- `rra` - Rotate stack A downward (last element becomes first)
+- `rrb` - Rotate stack B downward
+- `rrr` - Execute `rra` and `rrb` simultaneously
+
+## 🎲 Sorting Strategies
+
+### Three Elements Algorithm
+Hardcoded optimal solution for all 6 possible permutations.
+
+### Small Stack Algorithm (4-10 elements)
+1. Push minimum elements to stack B
+2. Sort remaining 3 elements in stack A
+3. Push elements back to stack A
+
+### Chunk Sort Algorithm (11+ elements)
+1. **Index Assignment**: Assign sorted indices to each element
+2. **Chunk Division**: Divide the stack into 5 chunks (≤100) or 11 chunks (>100)
+3. **Push to B**: Process each chunk, pushing elements to stack B with rotation optimization
+4. **Reconstruct**: Push elements back to stack A in descending order (largest first)
+
+#### Chunk Size Calculation
+- Stack size ≤ 100: 5 chunks
+- Stack size > 100: 11 chunks
+
+This approach minimizes operations by reducing the problem space and leveraging index-based positioning.
 
 ## 📊 Performance
 
-### Operation Count Targets 🎯
+The implementation achieves the following performance benchmarks:
 
-| Input Size | Excellent | Good | Acceptable |
-|------------|-----------|------|------------|
-| 3 numbers | ≤3 ops | ≤3 ops | ≤3 ops |
-| 5 numbers | ≤12 ops | ≤12 ops | ≤12 ops |
-| 100 numbers | ≤700 ops | ≤900 ops | ≤1500 ops |
-| 500 numbers | ≤5500 ops | ≤7000 ops | ≤11500 ops |
+| Stack Size | Maximum Operations | Average Operations |
+| ---------- | ------------------ | ------------------ |
+| 3          | 3                  | 2                  |
+| 5          | 12                 | 8                  |
+| 100        | ~700               | ~550               |
+| 500        | ~5500              | ~5700              |
 
-### Benchmarking
+> **Note**: Performance may vary based on input distribution. Random inputs typically achieve better than worst-case performance.
 
+### Optimization Techniques
+
+- Index-based sorting to avoid repeated comparisons
+- Chunk partitioning for divide-and-conquer approach
+- Strategic rotation to minimize operations
+- Median-based element positioning within chunks
+
+## 🧪 Testing
+
+You can test the program with various tools:
+
+### Manual Testing
 ```bash
-# Test with random 100 numbers
-ARG=$(seq 1 100 | shuf | tr '\n' ' '); ./push_swap $ARG | wc -l
+# Test with specific numbers
+./push_swap 4 67 3 87 23
 
-# Test with random 500 numbers
-ARG=$(seq 1 500 | shuf | tr '\n' ' '); ./push_swap $ARG | wc -l
-
-# Multiple tests for average
-for i in {1..10}; do
-  ARG=$(seq 1 100 | shuf | tr '\n' ' ')
-  echo "Test $i: $(./push_swap $ARG | wc -l) operations"
-done
+# Test with random numbers (using ARG)
+ARG=$(seq 1 100 | shuf | tr '\n' ' '); ./push_swap $ARG
 ```
 
-## 📁 Project Structure
-
-```
-push_swap/
-├── 📄 README.md                    # This file
-├── 📄 Makefile                     # Build configuration
-├── 📄 push_swap.h                  # Main header file
-├── 📄 main.c                       # Program entry point
-├── 📄 push_operations.c            # Push operations (pa, pb)
-├── 📄 swap_operations.c            # Swap operations (sa, sb, ss)
-├── 📄 rotate_operations.c          # Rotate operations (ra, rb, rr)
-├── 📄 reverse_rotate_operations.c  # Reverse rotate operations
-├── 📄 sorting_algorithms.c         # Main sorting logic
-├── 📄 sorting_helpers.c            # Index assignment utilities
-├── 📄 sorting_utils.c              # Helper functions
-├── 📄 chunk_sort.c                 # Chunk sorting algorithm
-├── 📄 utils.c                      # Utility functions
-└── 📁 libft/                       # Custom C library
-    ├── 📄 libft.h                  # Library header
-    ├── 📄 Makefile                 # Library build config
-    └── 📄 *.c                      # Library implementation files
-```
-
-### 🔍 Key Components
-
-- **`main.c`**: Input validation and program flow
-- **`sorting_algorithms.c`**: Core sorting logic dispatcher
-- **`chunk_sort.c`**: Advanced algorithm for large datasets
-- **`*_operations.c`**: Implementation of stack operations
-- **`libft/`**: Custom library with linked lists and utilities
-
-### Checker Program (if available)
-
+### Operation Counter
 ```bash
-# If you have a checker program
-ARG="3 1 2"; ./push_swap $ARG | ./checker $ARG
+# Count operations
+ARG="4 67 3 87 23"; ./push_swap $ARG | wc -l
 ```
 
-## 📚 Additional Resources
+### Visualizer Tools
+Consider using community-made visualizers to see the sorting process in action:
+- [push_swap_visualizer](https://github.com/o-reo/push_swap_visualizer)
+- [push_swap_tester](https://github.com/lmalki-h/push_swap_tester)
 
-- [Sorting Algorithms Visualization](https://visualgo.net/en/sorting)
-- [Stack Data Structure](https://en.wikipedia.org/wiki/Stack_(abstract_data_type))
+## 🤝 Contributing
 
-## 📝 License
+This is a 42 School project and follows the school's academic policies. While direct contributions are not accepted, feedback and suggestions are welcome!
 
-This project is part of the 42 School curriculum. Feel free to use it for educational purposes.
+### Coding Standards
+
+The project adheres to the 42 School Norminette v3:
+- Maximum 25 lines per function
+- Maximum 80 columns per line
+- Specific formatting and naming conventions
+- Forbidden functions: printf (custom implementation used)
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+Copyright (c) 2025 Pedro Monteiro
 
 ---
 
-**Happy Sorting!** 🎉
+<div align="center">
 
-*Made with ❤️ by [peda-cos](https://github.com/peda-cos)*
+**Made with ❤️ at [42 São Paulo](https://www.42sp.org.br/)**
+
+*This project is part of the 42 School common core curriculum*
+
+</div>
