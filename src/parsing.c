@@ -10,18 +10,54 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "../include/push_swap.h"
 
-# include <stdlib.h>
-# include <unistd.h>
+static void	add_token(t_stack **a, int value)
+{
+	t_stack	*node;
 
-size_t	ft_strlen(const char *s);
-long	ft_atol(const char *str);
-char	**ft_split(char const *s, char c);
-char	*ft_strdup(const char *s);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putendl_fd(char *s, int fd);
+	node = new_node(value);
+	if (!node)
+		error_exit(a);
+	stack_add_bottom(a, node);
+}
 
-#endif
+static void	parse_single(t_stack **a, char *arg)
+{
+	char	**tokens;
+	long	value;
+	int		i;
+
+	tokens = ft_split(arg, ' ');
+	if (!tokens)
+		error_exit(a);
+	i = 0;
+	while (tokens[i])
+	{
+		if (!validate_arg(tokens[i], *a, &value))
+			error_exit(a);
+		add_token(a, (int)value);
+		free(tokens[i]);
+		i++;
+	}
+	free(tokens);
+}
+
+t_stack	*parse_args(int argc, char **argv)
+{
+	t_stack	*a;
+	int		i;
+
+	a = NULL;
+	if (argc < 2)
+		return (NULL);
+	i = 1;
+	while (i < argc)
+	{
+		if (!argv[i] || argv[i][0] == '\0')
+			error_exit(&a);
+		parse_single(&a, argv[i]);
+		i++;
+	}
+	return (a);
+}

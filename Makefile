@@ -5,45 +5,64 @@
 #                                                     +:+ +:+         +:+      #
 #    By: peda-cos <peda-cos@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/01/14 19:52:23 by peda-cos          #+#    #+#              #
-#    Updated: 2025/01/20 19:18:30 by peda-cos         ###   ########.fr        #
+#    Created: 2026/04/08 00:00:00 by peda-cos          #+#    #+#              #
+#    Updated: 2026/04/08 00:00:00 by peda-cos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
+BONUS_NAME = checker
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-LIBFT_DIR = ./libft
-LIBFT = $(LIBFT_DIR)/libft.a
-SRCS = main.c push_operations.c swap_operations.c rotate_operations.c \
-	   reverse_rotate_operations.c sorting_algorithms.c sorting_helpers.c \
-	   sorting_utils.c chunk_sort.c utils.c
+LIBFT = libft/libft.a
+LIBFT_DIR = libft
+
+SRCS = src/main.c src/stack_utils.c src/operations_swap.c \
+       src/operations_push.c src/operations_rotate.c src/operations_rev.c \
+       src/parsing.c src/parsing_utils.c src/sort_utils.c src/sort_small.c \
+       src/sort_turk.c src/sort_turk_utils.c src/sort_execute.c
 OBJS = $(SRCS:.c=.o)
+
+BONUS_SRCS = bonus/checker_bonus.c bonus/checker_utils_bonus.c \
+             src/stack_utils.c src/operations_swap.c src/operations_push.c \
+             src/operations_rotate.c src/operations_rev.c src/parsing.c \
+             src/parsing_utils.c src/sort_utils.c
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)
-	@echo "Push_swap build complete."
-
 $(LIBFT):
 	@make -C $(LIBFT_DIR)
-	@echo "Libft build complete."
 
-%.o: %.c push_swap.h libft/libft.h
+$(NAME): $(LIBFT) $(OBJS)
+	@$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -o $(NAME)
+	@echo "Compiled: $(NAME)"
+
+src/%.o: src/%.c include/push_swap.h
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo "Compiling: $<"
+
+bonus: .bonus
+
+.bonus: $(LIBFT) $(BONUS_OBJS)
+	@$(CC) $(CFLAGS) $(BONUS_OBJS) -L$(LIBFT_DIR) -lft -o $(BONUS_NAME)
+	@touch .bonus
+	@echo "Compiled: $(BONUS_NAME)"
+
+bonus/%.o: bonus/%.c bonus/checker_bonus.h include/push_swap.h
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "Compiling: $<"
 
 clean:
-	@rm -f $(OBJS)
-	@make clean -C $(LIBFT_DIR)
-	@echo "Clean complete."
+	@make -C $(LIBFT_DIR) clean
+	@rm -f $(OBJS) $(BONUS_OBJS) .bonus
+	@echo "Cleaned objects"
 
 fclean: clean
-	@rm -f $(NAME)
-	@make fclean -C $(LIBFT_DIR)
-	@echo "Fclean complete."
+	@make -C $(LIBFT_DIR) fclean
+	@rm -f $(NAME) $(BONUS_NAME)
+	@echo "Cleaned: $(NAME) $(BONUS_NAME)"
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

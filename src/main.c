@@ -10,18 +10,36 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "../include/push_swap.h"
 
-# include <stdlib.h>
-# include <unistd.h>
+static void	sort_stack(t_stack **a, t_stack **b)
+{
+	int	size;
 
-size_t	ft_strlen(const char *s);
-long	ft_atol(const char *str);
-char	**ft_split(char const *s, char c);
-char	*ft_strdup(const char *s);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putendl_fd(char *s, int fd);
+	size = stack_size(*a);
+	if (size == 2)
+		sort_two(a);
+	else if (size == 3)
+		sort_three(a);
+	else
+		turk_sort(a, b);
+}
 
-#endif
+int	main(int argc, char **argv)
+{
+	t_stack	*a;
+	t_stack	*b;
+
+	a = NULL;
+	b = NULL;
+	if (argc < 2)
+		return (0);
+	a = parse_args(argc, argv);
+	if (!a)
+		return (0);
+	if (!is_sorted(a))
+		sort_stack(&a, &b);
+	free_stack(&a);
+	free_stack(&b);
+	return (0);
+}

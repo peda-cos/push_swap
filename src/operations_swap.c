@@ -10,18 +10,37 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "../include/push_swap.h"
 
-# include <stdlib.h>
-# include <unistd.h>
+static void	swap_top(t_stack **stack)
+{
+	int	tmp;
 
-size_t	ft_strlen(const char *s);
-long	ft_atol(const char *str);
-char	**ft_split(char const *s, char c);
-char	*ft_strdup(const char *s);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putendl_fd(char *s, int fd);
+	if (!stack || !*stack || !(*stack)->next)
+		return ;
+	tmp = (*stack)->value;
+	(*stack)->value = (*stack)->next->value;
+	(*stack)->next->value = tmp;
+}
 
-#endif
+void	sa(t_stack **a, int print)
+{
+	swap_top(a);
+	if (print)
+		ft_putendl_fd("sa", 1);
+}
+
+void	sb(t_stack **b, int print)
+{
+	swap_top(b);
+	if (print)
+		ft_putendl_fd("sb", 1);
+}
+
+void	ss(t_stack **a, t_stack **b, int print)
+{
+	swap_top(a);
+	swap_top(b);
+	if (print)
+		ft_putendl_fd("ss", 1);
+}

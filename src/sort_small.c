@@ -10,18 +10,37 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "../include/push_swap.h"
 
-# include <stdlib.h>
-# include <unistd.h>
+void	sort_two(t_stack **a)
+{
+	if ((*a)->value > (*a)->next->value)
+		sa(a, 1);
+}
 
-size_t	ft_strlen(const char *s);
-long	ft_atol(const char *str);
-char	**ft_split(char const *s, char c);
-char	*ft_strdup(const char *s);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putendl_fd(char *s, int fd);
+void	sort_three(t_stack **a)
+{
+	int	top;
+	int	mid;
+	int	bot;
 
-#endif
+	top = (*a)->value;
+	mid = (*a)->next->value;
+	bot = (*a)->next->next->value;
+	if (top > mid && mid < bot && top < bot)
+		sa(a, 1);
+	else if (top > mid && mid > bot)
+	{
+		sa(a, 1);
+		rra(a, 1);
+	}
+	else if (top > mid && mid < bot && top > bot)
+		ra(a, 1);
+	else if (top < mid && mid > bot && top < bot)
+	{
+		sa(a, 1);
+		ra(a, 1);
+	}
+	else if (top < mid && mid > bot && top > bot)
+		rra(a, 1);
+}

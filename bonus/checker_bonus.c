@@ -10,18 +10,44 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "checker_bonus.h"
 
-# include <stdlib.h>
-# include <unistd.h>
+static void	apply_instructions(t_stack **a, t_stack **b)
+{
+	char	*line;
 
-size_t	ft_strlen(const char *s);
-long	ft_atol(const char *str);
-char	**ft_split(char const *s, char c);
-char	*ft_strdup(const char *s);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putendl_fd(char *s, int fd);
+	line = read_line();
+	while (line)
+	{
+		if (!execute_instruction(line, a, b))
+		{
+			free(line);
+			free_stack(a);
+			free_stack(b);
+			ft_putstr_fd("Error\n", 2);
+			exit(1);
+		}
+		free(line);
+		line = read_line();
+	}
+}
 
-#endif
+int	main(int argc, char **argv)
+{
+	t_stack	*a;
+	t_stack	*b;
+
+	a = NULL;
+	b = NULL;
+	if (argc < 2)
+		return (0);
+	a = parse_args(argc, argv);
+	apply_instructions(&a, &b);
+	if (is_sorted(a) && !b)
+		ft_putendl_fd("OK", 1);
+	else
+		ft_putendl_fd("KO", 1);
+	free_stack(&a);
+	free_stack(&b);
+	return (0);
+}

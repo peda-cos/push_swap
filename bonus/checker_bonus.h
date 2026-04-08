@@ -10,18 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef CHECKER_BONUS_H
+# define CHECKER_BONUS_H
 
-# include <stdlib.h>
-# include <unistd.h>
+# include "../include/push_swap.h"
 
-size_t	ft_strlen(const char *s);
-long	ft_atol(const char *str);
-char	**ft_split(char const *s, char c);
-char	*ft_strdup(const char *s);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putendl_fd(char *s, int fd);
+char	*read_line(void);
+int		execute_instruction(char *line, t_stack **a, t_stack **b);
 
 #endif

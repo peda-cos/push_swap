@@ -10,18 +10,45 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "../include/push_swap.h"
 
-# include <stdlib.h>
-# include <unistd.h>
+static void	rev_rotate(t_stack **stack)
+{
+	t_stack	*prev;
+	t_stack	*current;
 
-size_t	ft_strlen(const char *s);
-long	ft_atol(const char *str);
-char	**ft_split(char const *s, char c);
-char	*ft_strdup(const char *s);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putendl_fd(char *s, int fd);
+	if (!stack || !*stack || !(*stack)->next)
+		return ;
+	prev = NULL;
+	current = *stack;
+	while (current->next)
+	{
+		prev = current;
+		current = current->next;
+	}
+	prev->next = NULL;
+	current->next = *stack;
+	*stack = current;
+}
 
-#endif
+void	rra(t_stack **a, int print)
+{
+	rev_rotate(a);
+	if (print)
+		ft_putendl_fd("rra", 1);
+}
+
+void	rrb(t_stack **b, int print)
+{
+	rev_rotate(b);
+	if (print)
+		ft_putendl_fd("rrb", 1);
+}
+
+void	rrr(t_stack **a, t_stack **b, int print)
+{
+	rev_rotate(a);
+	rev_rotate(b);
+	if (print)
+		ft_putendl_fd("rrr", 1);
+}

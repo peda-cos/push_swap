@@ -1,46 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_operations.c                                :+:      :+:    :+:   */
+/*   operations_rev.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: peda-cos <peda-cos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 19:51:38 by peda-cos          #+#    #+#             */
-/*   Updated: 2025/01/14 19:51:39 by peda-cos         ###   ########.fr       */
+/*   Created: 2026/04/08 00:00:00 by peda-cos          #+#    #+#             */
+/*   Updated: 2026/04/08 00:00:00 by peda-cos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
-void	rotate_stack_up(t_list **stack)
+static void	rotate(t_stack **stack)
 {
-	t_list	*last;
-	t_list	*first;
+	t_stack	*first;
+	t_stack	*last;
 
 	if (!stack || !*stack || !(*stack)->next)
 		return ;
 	first = *stack;
-	last = ft_lstlast(*stack);
-	*stack = first->next;
+	*stack = (*stack)->next;
 	first->next = NULL;
+	last = stack_last(*stack);
 	last->next = first;
 }
 
-void	rotate_a(t_list **stack_a)
+void	ra(t_stack **a, int print)
 {
-	rotate_stack_up(stack_a);
-	ft_printf("ra\n");
+	rotate(a);
+	if (print)
+		ft_putendl_fd("ra", 1);
 }
 
-void	rotate_b(t_list **stack_b)
+void	rb(t_stack **b, int print)
 {
-	rotate_stack_up(stack_b);
-	ft_printf("rb\n");
+	rotate(b);
+	if (print)
+		ft_putendl_fd("rb", 1);
 }
 
-void	rotate_a_b(t_list **stack_a, t_list **stack_b)
+void	rr(t_stack **a, t_stack **b, int print)
 {
-	rotate_stack_up(stack_a);
-	rotate_stack_up(stack_b);
-	ft_printf("rr\n");
+	rotate(a);
+	rotate(b);
+	if (print)
+		ft_putendl_fd("rr", 1);
 }

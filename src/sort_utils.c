@@ -10,18 +10,44 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "../include/push_swap.h"
 
-# include <stdlib.h>
-# include <unistd.h>
+int	is_sorted(t_stack *stack)
+{
+	while (stack && stack->next)
+	{
+		if (stack->value > stack->next->value)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}
 
-size_t	ft_strlen(const char *s);
-long	ft_atol(const char *str);
-char	**ft_split(char const *s, char c);
-char	*ft_strdup(const char *s);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putendl_fd(char *s, int fd);
+t_stack	*find_min(t_stack *stack)
+{
+	t_stack	*min;
 
-#endif
+	min = stack;
+	while (stack)
+	{
+		if (stack->value < min->value)
+			min = stack;
+		stack = stack->next;
+	}
+	return (min);
+}
+
+int	get_position(t_stack *stack, t_stack *node)
+{
+	int	pos;
+
+	pos = 0;
+	while (stack)
+	{
+		if (stack == node)
+			return (pos);
+		pos++;
+		stack = stack->next;
+	}
+	return (pos);
+}

@@ -10,12 +10,71 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/push_swap.h"
 
-void	ft_putendl_fd(char *s, int fd)
+t_stack	*new_node(int value)
 {
-	if (!s)
+	t_stack	*node;
+
+	node = malloc(sizeof(t_stack));
+	if (!node)
+		return (NULL);
+	node->value = value;
+	node->target = NULL;
+	node->next = NULL;
+	return (node);
+}
+
+void	stack_add_bottom(t_stack **stack, t_stack *node)
+{
+	t_stack	*last;
+
+	if (!stack || !node)
 		return ;
-	write(fd, s, ft_strlen(s));
-	write(fd, "\n", 1);
+	if (!*stack)
+	{
+		*stack = node;
+		return ;
+	}
+	last = stack_last(*stack);
+	last->next = node;
+}
+
+void	free_stack(t_stack **stack)
+{
+	t_stack	*current;
+	t_stack	*next;
+
+	if (!stack || !*stack)
+		return ;
+	current = *stack;
+	while (current)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
+	*stack = NULL;
+}
+
+int	stack_size(t_stack *stack)
+{
+	int	size;
+
+	size = 0;
+	while (stack)
+	{
+		size++;
+		stack = stack->next;
+	}
+	return (size);
+}
+
+t_stack	*stack_last(t_stack *stack)
+{
+	if (!stack)
+		return (NULL);
+	while (stack->next)
+		stack = stack->next;
+	return (stack);
 }
